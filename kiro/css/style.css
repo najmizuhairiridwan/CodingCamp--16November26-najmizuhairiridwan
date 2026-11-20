@@ -1,0 +1,533 @@
+/* =============================================
+   CSS CUSTOM PROPERTIES — THEMES
+   ============================================= */
+:root {
+  --bg:          #0f0f13;
+  --surface:     #1a1a24;
+  --surface-alt: #22223a;
+  --border:      #2e2e45;
+  --accent:      #7c6af7;
+  --accent-hover:#9b8cff;
+  --text:        #e8e8f0;
+  --text-muted:  #8888aa;
+  --done-text:   #55556a;
+  --danger:      #e05c6b;
+  --success:     #4ecda4;
+  --radius:      12px;
+  --shadow:      0 4px 24px rgba(0,0,0,0.4);
+  --transition:  0.2s ease;
+}
+
+[data-theme="light"] {
+  --bg:          #f0f0f8;
+  --surface:     #ffffff;
+  --surface-alt: #e8e8f4;
+  --border:      #d0d0e0;
+  --accent:      #6355e8;
+  --accent-hover:#7c6af7;
+  --text:        #1a1a2e;
+  --text-muted:  #666688;
+  --done-text:   #aaaacc;
+  --shadow:      0 4px 24px rgba(0,0,0,0.1);
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px 20px 48px;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* =============================================
+   HEADER
+   ============================================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto 20px;
+}
+
+#datetime {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#time {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1;
+  color: var(--accent);
+}
+
+#date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+#theme-toggle {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#theme-toggle:hover {
+  background: var(--accent);
+  transform: rotate(20deg);
+}
+
+/* =============================================
+   GREETING CARD
+   ============================================= */
+.greeting-card {
+  max-width: 1100px;
+  margin: 0 auto 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+#greeting {
+  font-size: 1.8rem;
+  font-weight: 700;
+  flex: 1 1 300px;
+  min-width: 0;
+}
+
+.name-row {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.name-row input {
+  width: 180px;
+}
+
+/* =============================================
+   CARDS
+   ============================================= */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.card h2 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* =============================================
+   MAIN GRID
+   ============================================= */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1.4fr;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .links-card {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 580px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================
+   INPUTS & BUTTONS — SHARED
+   ============================================= */
+input[type="text"],
+input[type="url"],
+input[type="number"],
+select {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color var(--transition), background var(--transition);
+  font-family: inherit;
+}
+
+input:focus, select:focus {
+  border-color: var(--accent);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  transition: background var(--transition), opacity var(--transition), transform 0.1s;
+  font-family: inherit;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Primary accent button */
+#name-save,
+#todo-add,
+#link-add,
+#set-time,
+#timer-start {
+  background: var(--accent);
+  color: #fff;
+}
+
+#name-save:hover,
+#todo-add:hover,
+#link-add:hover,
+#set-time:hover,
+#timer-start:hover {
+  background: var(--accent-hover);
+}
+
+/* Secondary buttons */
+#timer-stop,
+#timer-reset {
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+#timer-stop:hover,
+#timer-reset:hover {
+  background: var(--border);
+}
+
+/* =============================================
+   FOCUS TIMER
+   ============================================= */
+.timer-card {
+  text-align: center;
+}
+
+#timer-display {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: var(--accent);
+  margin: 8px 0 16px;
+  font-variant-numeric: tabular-nums;
+  transition: color var(--transition);
+}
+
+#timer-display.warning {
+  color: var(--danger);
+}
+
+.timer-settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.timer-settings label {
+  font-size: 0.82rem;
+}
+
+#custom-minutes {
+  width: 60px;
+  text-align: center;
+  padding: 6px 8px;
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#timer-status {
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  min-height: 1.2em;
+}
+
+/* =============================================
+   TO-DO LIST
+   ============================================= */
+.todo-input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.todo-input-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+#todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 360px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+#todo-list::-webkit-scrollbar {
+  width: 4px;
+}
+#todo-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+#todo-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  transition: background var(--transition), opacity var(--transition);
+}
+
+.todo-item.done {
+  opacity: 0.55;
+}
+
+.todo-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+  border-radius: 4px;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.todo-item .task-text {
+  flex: 1;
+  font-size: 0.9rem;
+  word-break: break-word;
+  min-width: 0;
+  transition: color var(--transition), text-decoration var(--transition);
+}
+
+.todo-item.done .task-text {
+  text-decoration: line-through;
+  color: var(--done-text);
+}
+
+.todo-item .edit-input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+}
+
+.todo-item .btn-edit,
+.todo-item .btn-save,
+.todo-item .btn-delete {
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+.todo-item .btn-edit,
+.todo-item .btn-save {
+  background: var(--surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.todo-item .btn-edit:hover,
+.todo-item .btn-save:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.todo-item .btn-delete {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.todo-item .btn-delete:hover {
+  background: var(--danger);
+  color: #fff;
+  border-color: var(--danger);
+}
+
+/* =============================================
+   QUICK LINKS
+   ============================================= */
+.link-input-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+#link-label {
+  width: 110px;
+}
+
+#link-url {
+  flex: 1;
+  min-width: 140px;
+}
+
+#links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.link-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 6px 14px 6px 10px;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.link-chip:hover {
+  border-color: var(--accent);
+  background: var(--border);
+}
+
+.link-chip a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.link-chip a:hover {
+  color: var(--accent);
+}
+
+.link-chip .link-favicon {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+}
+
+.link-chip .btn-remove-link {
+  background: none;
+  color: var(--text-muted);
+  border: none;
+  font-size: 0.8rem;
+  padding: 0 2px;
+  line-height: 1;
+  opacity: 0.5;
+  transition: opacity var(--transition), color var(--transition);
+}
+
+.link-chip .btn-remove-link:hover {
+  opacity: 1;
+  color: var(--danger);
+  transform: none;
+}
+
+/* =============================================
+   TOAST NOTIFICATION
+   ============================================= */
+#toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+#toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
